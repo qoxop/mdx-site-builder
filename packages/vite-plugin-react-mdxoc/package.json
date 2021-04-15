@@ -1,0 +1,25 @@
+{
+  "name": "@qoxop/vite-plugin-react-mdxoc",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "张集伟 <1106291186@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://store.codcats.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22"
+  }
+}

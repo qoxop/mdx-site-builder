@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "sourceMap": true,
+      "allowSyntheticDefaultImports": true,
+      "module": "esNext",
+      "jsx": "react",
+      "target": "ES6",
+      "allowJs": true,
+      "experimentalDecorators": true,
+      "esModuleInterop": true,
+      "noEmitOnError": true,
+      "noEmit": true,
+      "pretty": true,
+      "allowUnreachableCode": true,
+      "lib": ["dom", "es2015",],
+      "moduleResolution": "node",
+      "typeRoots": ["node_modules/@types"],
+      "baseUrl": ".",
+      "skipLibCheck": true,
+    },
+    "exclude": [
+      "node_modules",
+    ]
+  }
+  

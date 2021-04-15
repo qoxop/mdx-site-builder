@@ -1,0 +1,81 @@
+---
+title: PieChart
+mode: mobile
+nav:
+  title: 通用组件
+  path: /components
+group:
+  path: /components/base
+  title: 基础
+---
+
+# PieChart
+
+饼状图
+
+## 使用方法
+
+```jsx
+import React from 'react';
+import ReactDom from 'react-dom';
+import PieChart from 'yunke/charts/src/pieChart';
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+    };
+    this.opt = {};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+        data: [
+          {
+            label: '罗湖区',
+            value: 100,
+          },
+          {
+            label: '南山区',
+            value: 50,
+          },
+          {
+            label: 'dd',
+            value: 4,
+          },
+          {
+            label: 'fff',
+            value: 65,
+          },
+          {
+            label: '宝安区',
+            value: 30,
+          },
+          {
+            label: '其它',
+            value: 46,
+          },
+        ],
+      });
+    }, 1000);
+  }
+  sectorClick(item) {
+    console.log(item);
+  }
+  render() {
+    return (
+      <PieChart
+        data={this.state.data}
+        opt={this.opt}
+        loading={this.state.loading}
+        onSectorClick={item => this.sectorClick(item)}
+      />
+    );
+  }
+}
+```
+
+<API></API>

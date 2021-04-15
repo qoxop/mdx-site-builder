@@ -1,0 +1,142 @@
+---
+title: Button
+mode: mobile
+order: 1
+nav:
+  title: 通用组件
+  path: /components
+  order: 2
+group:
+  path: /components/base
+  title: 基础
+  order: 1
+---
+
+# Button
+
+移动销售按钮样式组件，分别提供了`primary`, `minor`, `disable` 和 `warning` 四种类型的按钮，和额外两种大小尺寸，`&-mid` 和 `&-sm`
+
+另外，可以通过`ButtonGroup`组件快速对按钮进行布局。
+
+## 使用方法
+
+### 1. 一般按钮
+
+```tsx
+/**
+ * title: 默认
+ */
+import React from 'react';
+import Btn from 'components/button';
+
+export default () => {
+  return (
+    <>
+      <h2 className="pd16">按钮展示</h2>
+      <div className="pd16">
+        <Btn type="primary" className="mtb10">
+          primary
+        </Btn>
+        <Btn type="minor" className="mtb10">
+          minor
+        </Btn>
+        <Btn type="warning" className="mtb10">
+          warning
+        </Btn>
+        <Btn type="disable" className="mtb10">
+          disable
+        </Btn>
+      </div>
+      <div className="pd16">
+        <Btn type="primary" size="default" className="mtb10">
+          default
+        </Btn>
+        <Btn type="minor" size="mid" className="mtb10">
+          mid
+        </Btn>
+        <Btn type="warning" size="sm" className="mtb10">
+          sm
+        </Btn>
+      </div>
+    </>
+  );
+};
+```
+
+### 2. 吸底按钮
+
+使用 `ButtonGroup` 配合 `PageLayout` 组件快速实现按钮吸底效果
+
+```tsx
+/**
+ * title: 双操作
+ */
+import React from 'react';
+import Btn, { ButtonGroup, ActionBtn } from 'components/button';
+
+export default () => {
+  return (
+    <div className="pt20">
+      <ButtonGroup className="border-bottom-gray border-top-gray">
+        <Btn type="minor" className="flex-1">
+          次要操作
+        </Btn>
+        <Btn type="primary" className="flex-1">
+          主要操作
+        </Btn>
+      </ButtonGroup>
+    </div>
+  );
+};
+```
+
+```tsx
+/**
+ * title: 三操作
+ */
+import React from 'react';
+import Btn, { ButtonGroup, ActionBtn } from 'components/button';
+
+export default () => {
+  return (
+    <div className="pt20">
+      <ButtonGroup className="border-bottom-gray border-top-gray">
+        <ActionBtn icon={<span></span>} text="次要动作 1" />
+        <ActionBtn icon={<span></span>} text="次要动作 2" />
+        <Btn type="primary" className="flex-1">
+          主要操作
+        </Btn>
+      </ButtonGroup>
+    </div>
+  );
+};
+```
+
+```tsx
+/**
+ * title: 四操作
+ */
+import React from 'react';
+import Btn, { ButtonGroup, ActionBtn } from 'components/button';
+
+export default () => {
+  return (
+    <div className="pt20">
+      <ButtonGroup className="border-bottom-gray">
+        <ActionBtn icon={<span></span>} text="次要动作 1" />
+        <ActionBtn icon={<span></span>} text="次要动作 2" />
+        <ActionBtn icon={<span></span>} text="次要动作 3" />
+        <Btn type="primary" className="flex-1">
+          主要操作
+        </Btn>
+      </ButtonGroup>
+    </div>
+  );
+};
+```
+
+<API></API>
+
+## 源码地址
+
+[assets/styles/object/buttons.less](https://git.myscrm.cn/ydxs/ydxs/-/blob/master/assets/styles/object/buttons.less)

@@ -1,0 +1,36 @@
+@import "antd/lib/style/themes/default.less";
+@import '../libs/yunke-color.less';
+
+
+@primary-color: #yunke-color[@primary];
+@primaryColor:@primary-color;
+@gold: #yunke-color[@gold];
+@red: #yunke-color[@red];
+@green: #yunke-color[@green];
+@blue: #yunke-color[@blue];
+
+// 颜色集合对象
+@primaryColors: #yunke-color.generatorColors(#f65c2d);
+@goldColors: #yunke-color.generatorColors(#FAAD14);
+@redColors: #yunke-color.generatorColors(#F5222D);
+@greenColors: #yunke-color.generatorColors(#52C41A);
+@blueColors: #yunke-color.generatorColors(#007BD9);
+@fnColors: #yunke-color.fns();
+@fontColors: #yunke-color.fonts();
+@blockColors: #yunke-color.blocks();
+
+
+
+@title-color: @fontColors[title];
+@help-color: @fontColors[help];
+@link-color: @fnColors[link];
+// Input
+@input-hover-border-color: @primaryColors[5];
+@input-placeholder-color: @fontColors[placeholder];
+// Button
+@button-primary-bg: @primary-color;
+
+
+// Font、Button lg
+@font-size-base: 14px;
+@border-radius-base: '2px';

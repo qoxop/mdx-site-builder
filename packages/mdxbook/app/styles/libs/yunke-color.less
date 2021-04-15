@@ -1,0 +1,53 @@
+
+@import 'antd/lib/style/color/colorPalette.less';
+
+#yunke-color() {
+    @primary: #f65c2d;
+    @red: #F5222D;
+    @green: #52C41A;
+    @blue: #007BD9;
+    @gold: #FAAD14;
+    @yellow: #FAAD14;
+    .generatorColors(@color) {
+        1: color(~`colorPalette('@{color}', 1) `);
+        2: color(~`colorPalette('@{color}', 2) `);
+        3: color(~`colorPalette('@{color}', 3) `);
+        4: color(~`colorPalette('@{color}', 4) `);
+        5: color(~`colorPalette('@{color}', 5) `);
+        6: @color;
+        7: color(~`colorPalette('@{color}', 7) `);
+        8: color(~`colorPalette('@{color}', 8) `);
+        9: color(~`colorPalette('@{color}', 9) `);
+        10: color(~`colorPalette('@{color}', 10) `);
+        @1: color(~`colorPalette('@{color}', 1) `);
+        @2: color(~`colorPalette('@{color}', 2) `);
+        @3: color(~`colorPalette('@{color}', 3) `);
+        @4: color(~`colorPalette('@{color}', 4) `);
+        @5: color(~`colorPalette('@{color}', 5) `);
+        @6: @color;
+        @7: color(~`colorPalette('@{color}', 7) `);
+        @8: color(~`colorPalette('@{color}', 8) `);
+        @9: color(~`colorPalette('@{color}', 9) `);
+        @10: color(~`colorPalette('@{color}', 10) `);
+    }
+    .fns() {
+        link: #0099FF;
+        success: #52C41A;
+        warning: #FAAD14;
+        error: #FF4D4F;
+    }
+    .fonts() {
+        black: #000000;
+        title:  rgba(0, 0, 0, .85);
+        main: rgba(0, 0, 0, .65);
+        help: rgba(0, 0, 0, .45);
+        placeholder:  rgba(0, 0, 0, .25);
+    }
+    .blocks() {
+        low-visibility:  rgba(0, 0, 0, .25);
+        stroke: rgba(0, 0, 0, .15);
+        divide:  rgba(0, 0, 0, 0.06);
+        hover: rgba(0, 0, 0, 0.04);
+        table-title: rgba(0,0,0, 0.02);
+    }
+}

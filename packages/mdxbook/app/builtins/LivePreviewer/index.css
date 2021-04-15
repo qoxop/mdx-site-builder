@@ -1,0 +1,100 @@
+.aw-live-code-box {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    background-color: #f8f8f6;
+    overflow: hidden;
+}
+.aw-live-code-preview {
+    padding: 16px;
+    padding-bottom: 4px;
+}
+.aw-live-code-info-box {
+    border-top: 1px dotted rgba(0, 0, 0, 0.1);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-size: 14px;
+    color: #666;
+    padding-left: 8px;
+    margin-top: 12px;
+}
+.aw-live-code-info-box > p {
+    margin: 12px 0px;
+    padding-top: 4px;
+}
+.aw-live-code-info-box::before {
+    content: attr(title);
+    display: block;
+    position: absolute;
+    top: -13px;
+    left: 0px;
+    font-size: 16px;
+    color: #04353b;
+    padding: 0 8px;
+    background-color:#f8f8f6;
+    font-weight: 600;
+}
+.aw-live-code-info-box .aw-live-code-info-desc {
+    font-size: 12px;
+    padding: 8px 8px 8px 16px;
+    margin: 0;
+    color: #666;
+    line-height: 16px;
+    flex: 1;
+}
+.aw-live-code-actions-bar {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: #888;
+    padding: 8px;
+}
+.aw-live-code-actions-bar .aw-live-code-action {
+    cursor: pointer;
+    padding: 0 6px;
+}
+.aw-live-code-tab-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 36px;
+    line-height: 36px;
+    border-top: 1px dotted rgba(0, 0, 0, 0.1);
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+}
+.aw-live-code-tab-bar > div {
+    min-width: 100px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.aw-live-code-tab-select {
+    color: royalblue;
+    position: relative;
+}
+.aw-live-code-tab-select::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: 0; left: 0;
+    height: 2px;
+    background-color: royalblue;
+}
+.aw-live-code-tab-select textarea {
+    outline-color: rgba(0, 0, 0, 0.1);
+}
+.aw-lc-tab-block-select {
+    display: block;
+}
+.aw-lc-tab-block-select pre {
+    margin: 0;
+    padding: 10px;
+}
+.aw-lc-tab-block-unselect {
+    display: none;
+}
+.mlr4 {
+    margin: 0 4px;
+}

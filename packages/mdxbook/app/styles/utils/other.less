@@ -1,0 +1,19 @@
+/* 消除外边距重叠效果 */
+.fix-mg {
+    &::before { content: ''; display: block; height: 0.1px; }
+    &::after { content: ''; display: block; height: 0.1px;  }
+}
+
+/* 鼠标样式 */
+.pointer {
+    cursor: pointer;
+}
+
+
+.pos-r {
+    position: relative;
+}
+
+.pos-a {
+    position: absolute;
+}

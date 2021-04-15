@@ -1,0 +1,27 @@
+.PxBorder(@color, @colorName, @direction) {
+    .@{colorName}-@{direction}-line {
+        position: relative;
+        &:before {
+            content: '';
+            top: if((@direction = bottom), auto, 0);
+            left: if((@direction = right), auto, 0);
+            right: if((@direction = left), auto, 0);
+            bottom: if((@direction = top), auto, 0);
+            width: if(((@direction = top) or (@direction = bottom)), 100%, 1px);
+            height: if(((@direction = right) or (@direction = left)), 100%, 1px);
+            box-shadow: 0px 0px 1Px @color;
+            display: block;
+            position: absolute;
+            background-color: @color;
+            z-index: 1;
+            transform-origin: 50% 100%;
+            transform: if(((@direction = top) or (@direction = bottom)), scaleY(1), scaleX(1));
+            @media only screen and (-webkit-min-device-pixel-ratio: 2){
+                transform: if(((@direction = top) or (@direction = bottom)), scaleY(.5), scaleX(.5));
+            }
+            @media only screen and (-webkit-min-device-pixel-ratio: 3){
+                transform: if(((@direction = top) or (@direction = bottom)), scaleY(.3333333), scaleX(.3333333));
+            }
+        }
+    }
+};

@@ -1,0 +1,73 @@
+@import '../theme/theme.less';
+
+.c-gold, .c-yellow {
+    color: @gold !important;
+    each(range(10), {
+        &-@{value} { color: @goldColors[@@value] !important; }
+    });
+}
+.c-red {
+    color: @red !important;
+    each(range(10), {
+        &-@{value} { color: @redColors[@@value] !important; }
+    });
+}
+.c-green {
+    color: @green !important;
+    each(range(10), {
+        &-@{value} { color: @greenColors[@@value] !important; }
+    });
+}
+.c-blue {
+    color: @blue !important;
+    each(range(10), {
+        &-@{value} { color: @blueColors[@@value] !important; }
+    });
+}
+.c-skin {
+    color: @primaryColor !important;
+    each(range(10), {
+        &-@{value} { color: @primaryColors[@@value] !important; }
+    });
+}
+
+.c-title { color: @title-color !important; }
+.c-help { color: @help-color !important; }
+
+/* bg------------------------------------------------------- */
+.bg-white {
+    background-color: #fff !important;
+}
+.bg-grey-hover {
+    background-color: @blockColors[hover];
+}
+.bg-gold, .bg-yellow {
+    color: @gold !important;
+    each(range(10), {
+        &-@{value} { background-color: @goldColors[@@value] !important; }
+    });
+}
+.bg-red {
+    color: @red !important;
+    each(range(10), {
+        &-@{value} { background-color: @redColors[@@value] !important; }
+    });
+}
+.bg-green {
+    color: @green !important;
+    each(range(10), {
+        &-@{value} { background-color: @greenColors[@@value] !important; }
+    });
+}
+.bg-blue {
+    color: @blue !important;
+    each(range(10), {
+        &-@{value} { background-color: @blueColors[@@value] !important; }
+    });
+}
+.bg-skin {
+    color: @primaryColor !important;
+    each(range(10), {
+        &-@{value} { background-color: @primaryColors[@@value] !important; }
+    });
+}
