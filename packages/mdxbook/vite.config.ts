@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-import myPlugin from './libs/generator.js';
+import reactMdxoc from "@qoxop/vite-plugin-react-mdxoc"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    myPlugin(),
+    reactMdxoc(),
     reactRefresh()
   ],
   resolve: {
