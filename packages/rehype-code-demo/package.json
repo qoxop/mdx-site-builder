@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx gulp",
     "start": "npx gulp start",
-    "test": "npx gulp test"
+    "test": "npx gulp && node __tests__/index.js"
   },
   "author": {
     "name": "张集伟",

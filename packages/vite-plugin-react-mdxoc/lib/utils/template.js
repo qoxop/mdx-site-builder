@@ -1,5 +1,5 @@
 
-export const IndexTpl = (mountedId = 'root', layoutPath = '/.app/layout') => `
+const IndexTpl = (layoutPath) => `
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DataProvider from '@mdxbook/data-provider.tsx';
@@ -9,11 +9,11 @@ ReactDOM.render(
   <React.StrictMode>
     <DataProvider><Layout /></DataProvider>
   </React.StrictMode>,
-  document.getElementById('${mountedId}')
+  document.getElementById('root')
 )
 `
 
-export const DataProviderTpl = (handlerPath = '/.app/modules-handler') => `
+const DataProviderTpl = (handlerPath = '/.app/modules-handler') => `
 import React from 'react';
 import modulesHandler from '${handlerPath}';
 // glob 导入
@@ -28,3 +28,8 @@ export const useMetaData = () => {
 }
 export default ({children}) => (<DataContext.Provider value={data}>{children}</DataContext.Provider>);
 `
+
+module.exports = {
+  IndexTpl,
+  DataProviderTpl
+}
