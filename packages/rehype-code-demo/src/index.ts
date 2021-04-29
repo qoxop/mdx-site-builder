@@ -19,41 +19,52 @@ const isPreDemoCode = (node) => {
 export default function(options: IOptions) {
     const {
         workingDir,
-        tempDir,
+        demopath,
         fileconfig,
+        DisplayComponent
     } = options;
-    if (!fs.existsSync(resolve(workingDir, tempDir, `./demos/`))) {
-        fs.mkdirSync(resolve(workingDir, tempDir, `./demos/`))
+    // 确保 demo 文件路径存在
+    if (!fs.existsSync(resolve(workingDir, demopath))) {
+        fs.mkdirSync(resolve(workingDir, demopath))
     }
     return function transformer(tree) {
         const imports = [];
         let demoIndex = 0
         let hasPreCode = false;
         function visitor(node, index, parent) {
+            // 简单判断是否是 jsx、tsx 代码，配置文件中是否配置了pure
             if (isPreDemoCode(node) && !fileconfig.pure) {
-                console.log('success')
+                // 打上标识
                 hasPreCode = true;
+                // demo 代码个数递增
                 demoIndex++;
                 // 从节点获取信息
                 const codeNode = node.children[0];
                 const textNode =  codeNode.children[0];
+                /** 代码块的属性 */
                 const properties = codeNode.properties;
+                /** 代码字符串 */
                 const innerCode = textNode.value;
                 
+                /** 代码解析结果 */
                 const result = jsxCreator(innerCode, {
-                    index,
+                    index: demoIndex,
                     live: !!properties?.live,
                     properties,
                     options,
                 });
+                /** 不为nul、false 表示解析成功 */
                 if (result) {
                     imports.push(result.imports)
                     parent.children[index] = result.node;
                 }
             }
         }
+        // 遍历语法树
         visit(tree, 'element', visitor);
+        // 往头部插入 import 代码
         if (hasPreCode && imports.length) {
+            imports.push(`import ${DisplayComponent.name} from '${DisplayComponent.path}';`)
             const importStr = imports.map(item =>`${item}`).join('\n');
             tree.children.unshift({
                 type: "import",

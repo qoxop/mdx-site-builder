@@ -6,13 +6,14 @@ import * as ComponentCreator from './utils/component-creator';
 import codeReader from './utils/code-reader';
 import * as fs from 'fs';
 
-
 interface IMetadata {
+    /** 是否需要解析成实时代码块 */
     live?: boolean;
     /** 属性集合 */
     properties?:{[k: string]: any};
     /** demo 的序号 */
     index: number;
+    /** 配置信息 */
     options: IOptions;
 }
 
@@ -42,6 +43,13 @@ const generatorImportCode = (infos: IImportInfo[]):string => (infos.map(item => 
     }
 }).join('\n'));
 
+/**
+ * 解析代码，生成 jsx 节点
+ * 副作用：往磁盘写入代码文件
+ * @param code 代码字符串
+ * @param metadata 元素数据，配置信息等
+ * @returns 
+ */
 export default function generator(code:string, metadata:IMetadata) {
     const {
         live,
@@ -50,7 +58,7 @@ export default function generator(code:string, metadata:IMetadata) {
         options: {
             workingDir = process.cwd(),
             curFilePath,
-            tempDir,
+            demopath,
             viewRelative,
             LiveComponent,
             DisplayComponent: {
@@ -58,16 +66,23 @@ export default function generator(code:string, metadata:IMetadata) {
             }
         }
     } = metadata;
-
+    // 解析出错也不要🙅影响正常的流程
     try {
-        // 源码解析
-        const {code: codeStr, infos} = parseImports(code);
-        // 相对路径的文件
+        // 
+        const {
+            /** 去掉头部 import 后的代码字符串 */
+            code: codeStr,
+            /** import 代码对应的信息 */
+            infos
+        } = parseImports(code);
+        
+        /** 当前文件的相对引用文件得绝对路径列表 */
         const relativeFiles = [];
         // 路径转化
         infos.forEach(item => {
             if (/^\.\.?\//.test(item.moduleName)) { // 相对路径 => 绝对路径
-                relativeFiles.push(resolve(workingDir || '', curFilePath, item.moduleName))
+                relativeFiles.push(resolve(workingDir || process.cwd(), curFilePath, item.moduleName));
+                // 使用相对与工作目录来说的绝对路径引入
                 item.moduleName = resolve(curFilePath, item.moduleName);
             }
         });
@@ -93,7 +108,7 @@ export default function generator(code:string, metadata:IMetadata) {
             });
         }
         // 将 demo 组件写入临时目录文件
-        fs.writeFileSync(resolve(workingDir, tempDir, `./demos/${key}.demo.jsx`), demo);
+        fs.writeFileSync(resolve(workingDir, demopath, `./${key}.demo.jsx`), demo);
         
         // 处理展示用的代码
         const codes:{code:string, language:string, type: 'main'|'minor', filename?:string}[] = [
@@ -102,7 +117,7 @@ export default function generator(code:string, metadata:IMetadata) {
                 type: 'main',
                 language: 'tsx',
             }
-        ]
+        ];
         if (viewRelative) {
             relativeFiles.forEach(item => {
                 const obj = codeReader(item);
@@ -113,7 +128,7 @@ export default function generator(code:string, metadata:IMetadata) {
         }
         return {
             // 将 demo 引入页面
-            imports: `import MDX_Demo_${index} from "${resolve(tempDir.replace(workingDir, ''), `./demos/${key}.demo.jsx`)}";`,
+            imports: `import MDX_Demo_${index} from "${resolve(demopath.replace(workingDir, ''), `./${key}.demo.jsx`)}";`,
             node: {
                 type: 'jsx',
                 value: ComponentCreator.codeDisplay({

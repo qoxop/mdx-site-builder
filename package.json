@@ -2,10 +2,14 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "lerna": "^4.0.0"
   },
   "publishConfig": {
     "registry": "http://store.codcats.com/"
   },
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }

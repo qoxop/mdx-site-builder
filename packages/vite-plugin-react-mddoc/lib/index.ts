@@ -8,19 +8,22 @@ const defConf = {
   buildin: {
     ModuleHandler: '@qoxop/default-theme/lib/module-handler',
     Layout: '@qoxop/default-theme/lib/layout',
+    /** 实时代码组件的名字和位置 */
     LiveComponent: {
       name: 'LivePreviewer',
       path: '@qoxop/default-theme/live-previewer',
     },
+    /** 代码展示组件 */
     CodesComponent: {
       name:'CodesDisplay',
       path:'@qoxop/default-theme/codes-display',
     }
   },
-  extraMdxPlugin: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
+  // extraMdxPlugin: {
+  //   remarkPlugins: [],
+  //   rehypePlugins: [],
+  // },
+  /** 触发demo的路径 */
   demopath: cwd + '/.app/.demos',
   showRelative: true,
 }
@@ -46,8 +49,14 @@ export default function ReactMdxoc(options) {
         return DataProviderTpl(ModuleHandler);
       }
     },
+    /**
+     * 代码转化
+     * @param {*} src
+     * @param {*} id
+     * @returns
+     */
     transform(src, id) {
-      if (/\.mdx$/.test(id)) {
+      if (/\.mdx$/.test(id)) { // 只处理 mdx 文件
         // 简单处理一下 yaml 配置
         const {src: codeStr, config} = yamlToExport(src, 'config');
         // 转化代码 MDX to JSX 

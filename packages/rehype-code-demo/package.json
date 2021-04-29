@@ -1,7 +1,7 @@
 {
   "name": "@qoxop/rehype-code-demo",
   "version": "1.0.2",
-  "main": "index.js",
+  "main": "libindex.js",
   "license": "MIT",
   "scripts": {
     "build": "npx gulp",
@@ -26,10 +26,12 @@
     "@babel/core": "^7.12.16",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "@babel/preset-typescript": "^7.12.16",
+    "@mdx-js/mdx": "^1.6.22",
     "@types/node": "^14.14.25",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "through2": "^4.0.2"
+    "through2": "^4.0.2",
+    "yaml": "^1.10.2"
   },
   "dependencies": {
     "typescript": "^4.1.4",

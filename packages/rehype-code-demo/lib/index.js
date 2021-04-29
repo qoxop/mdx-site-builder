@@ -26,12 +26,13 @@ const isPreDemoCode = node => {
 function _default(options) {
   const {
     workingDir,
-    tempDir,
-    fileconfig
-  } = options;
+    demopath,
+    fileconfig,
+    DisplayComponent
+  } = options; // 确保 demo 文件路径存在
 
-  if (!fs.existsSync((0, _path.resolve)(workingDir, tempDir, `./demos/`))) {
-    fs.mkdirSync((0, _path.resolve)(workingDir, tempDir, `./demos/`));
+  if (!fs.existsSync((0, _path.resolve)(workingDir, demopath))) {
+    fs.mkdirSync((0, _path.resolve)(workingDir, demopath));
   }
 
   return function transformer(tree) {
@@ -40,32 +41,43 @@ function _default(options) {
     let hasPreCode = false;
 
     function visitor(node, index, parent) {
+      // 简单判断是否是 jsx、tsx 代码，配置文件中是否配置了pure
       if (isPreDemoCode(node) && !fileconfig.pure) {
-        console.log('success');
-        hasPreCode = true;
+        // 打上标识
+        hasPreCode = true; // demo 代码个数递增
+
         demoIndex++; // 从节点获取信息
 
         const codeNode = node.children[0];
         const textNode = codeNode.children[0];
+        /** 代码块的属性 */
+
         const properties = codeNode.properties;
+        /** 代码字符串 */
+
         const innerCode = textNode.value;
+        /** 代码解析结果 */
+
         const result = (0, _jsxGenerator.default)(innerCode, {
-          index,
+          index: demoIndex,
           live: !!properties?.live,
           properties,
           options
         });
+        /** 不为nul、false 表示解析成功 */
 
         if (result) {
           imports.push(result.imports);
           parent.children[index] = result.node;
         }
       }
-    }
+    } // 遍历语法树
 
-    (0, _unistUtilVisit.default)(tree, 'element', visitor);
+
+    (0, _unistUtilVisit.default)(tree, 'element', visitor); // 往头部插入 import 代码
 
     if (hasPreCode && imports.length) {
+      imports.push(`import ${DisplayComponent.name} from '${DisplayComponent.path}';`);
       const importStr = imports.map(item => `${item}`).join('\n');
       tree.children.unshift({
         type: "import",

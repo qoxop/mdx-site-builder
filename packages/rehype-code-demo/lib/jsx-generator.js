@@ -46,6 +46,14 @@ const generatorImportCode = infos => infos.map(item => {
     }
   }
 }).join('\n');
+/**
+ * 解析代码，生成 jsx 节点
+ * 副作用：往磁盘写入代码文件
+ * @param code 代码字符串
+ * @param metadata 元素数据，配置信息等
+ * @returns 
+ */
+
 
 function generator(code, metadata) {
   const {
@@ -55,28 +63,33 @@ function generator(code, metadata) {
     options: {
       workingDir = process.cwd(),
       curFilePath,
-      tempDir,
+      demopath,
       viewRelative,
       LiveComponent,
       DisplayComponent: {
         name: DisplayComponentName
       }
     }
-  } = metadata;
+  } = metadata; // 解析出错也不要🙅影响正常的流程
 
   try {
-    // 源码解析
+    // 
     const {
+      /** 去掉头部 import 后的代码字符串 */
       code: codeStr,
+
+      /** import 代码对应的信息 */
       infos
-    } = (0, _parseImports.default)(code); // 相对路径的文件
+    } = (0, _parseImports.default)(code);
+    /** 当前文件的相对引用文件得绝对路径列表 */
 
     const relativeFiles = []; // 路径转化
 
     infos.forEach(item => {
       if (/^\.\.?\//.test(item.moduleName)) {
         // 相对路径 => 绝对路径
-        relativeFiles.push((0, _path.resolve)(workingDir || '', curFilePath, item.moduleName));
+        relativeFiles.push((0, _path.resolve)(workingDir || process.cwd(), curFilePath, item.moduleName)); // 使用相对与工作目录来说的绝对路径引入
+
         item.moduleName = (0, _path.resolve)(curFilePath, item.moduleName);
       }
     }); // 重新生成 import code 
@@ -104,7 +117,7 @@ function generator(code, metadata) {
     } // 将 demo 组件写入临时目录文件
 
 
-    fs.writeFileSync((0, _path.resolve)(workingDir, tempDir, `./demos/${key}.demo.jsx`), demo); // 处理展示用的代码
+    fs.writeFileSync((0, _path.resolve)(workingDir, demopath, `./${key}.demo.jsx`), demo); // 处理展示用的代码
 
     const codes = [{
       code: live ? infos.map(item => `/* ${item.origin} */`).join('\n') + codeStr : code,
@@ -126,7 +139,7 @@ function generator(code, metadata) {
 
     return {
       // 将 demo 引入页面
-      imports: `import MDX_Demo_${index} from "${(0, _path.resolve)(tempDir.replace(workingDir, ''), `./demos/${key}.demo.jsx`)}";`,
+      imports: `import MDX_Demo_${index} from "${(0, _path.resolve)(demopath.replace(workingDir, ''), `./${key}.demo.jsx`)}";`,
       node: {
         type: 'jsx',
         value: ComponentCreator.codeDisplay({
