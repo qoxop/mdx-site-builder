@@ -1,10 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
 var _unistUtilVisit = _interopRequireDefault(require("unist-util-visit"));
 
 var _jsxGenerator = _interopRequireDefault(require("./jsx-generator"));
@@ -23,7 +18,7 @@ const isPreDemoCode = node => {
   return node.tagName === 'pre' && node.children && node.children.length === 1 && node.children.length === 1 && node.children[0].tagName === 'code' && /language-[t,j]sx/.test(node.children[0]?.properties?.className) && !node.children[0]?.properties?.pure;
 };
 
-function _default(options) {
+module.exports = function (options) {
   const {
     workingDir,
     demopath,
@@ -85,4 +80,4 @@ function _default(options) {
       });
     }
   };
-}
+};

@@ -16,7 +16,7 @@ const isPreDemoCode = (node) => {
     )
 }
 
-export default function(options: IOptions) {
+module.exports = function(options: IOptions) {
     const {
         workingDir,
         demopath,

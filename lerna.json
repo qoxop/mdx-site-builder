@@ -3,6 +3,18 @@
     "packages/*"
   ],
   "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "message": "chore(release): publish",
+      "registry": "https://npm.qoxop.run"
+    },
+    "bootstrap": {
+      "ignore": "component-*",
+      "npmClientArgs": ["--no-package-lock"],
+      "scope": ["@mddoc"]
+    }
+  },
   "useWorkspaces": true,
   "version": "0.0.0"
 }

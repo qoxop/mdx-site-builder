@@ -5,17 +5,19 @@ tags: code,mdx
 
 ### code preview 
 
-```jsx live
+```tsx live
 import React, { useEffect } from 'react';
+import str from './data/str';
 
-() => {
+conat App = (props: {str: string}) => {
   useEffect(() => {
-    console.log('yo yo yo~')
-  }, [])
+    console.log('yo yo yo!~');
+  }, []);
   return <div>
-    <h1>code preivew </h1>
+    <h1>code preivew: {props.str}</h1>
   </div>
 }
+render(<App str={str} />);
 ```
 
 > other info 😋

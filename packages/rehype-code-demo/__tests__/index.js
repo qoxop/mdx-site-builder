@@ -22,6 +22,7 @@ files.forEach(item => {
           curFilePath: item.replace(__dirname, ''),
           demopath: path.resolve(__dirname, './_demos/'),
           fileconfig: config,
+          viewRelative: true,
           LiveComponent: {
             name: 'LivePreviewer',
             path: '@qoxop/default-theme/live-previewer',
@@ -35,5 +36,5 @@ files.forEach(item => {
     ]
   }).then(jsx => {
     fs.writeFileSync(item.replace(/.mdx$/, '.jsx'), jsx);
-  });
+  }).catch(console.warn);
 });
