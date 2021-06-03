@@ -2,7 +2,8 @@
 /* @jsx mdx */
 
 export const config = {
-  "pure": true
+  "pure": true,
+  "filepath": "/Users/qoxop/development/mynpm/mdx-site-builder/packages/rehype-code-demo/__tests__/demos/d1/index.mdx"
 };
 
 const layoutProps = {

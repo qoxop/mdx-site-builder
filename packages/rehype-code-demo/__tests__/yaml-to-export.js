@@ -7,7 +7,7 @@ export const ${name} = ${code};
 ${other}
 `
 
-module.exports = function (src, name) {
+module.exports = function (src, name, filepath) {
     const reg = /^---\n(.*\n)+---/;
     const yamlMatchArray = src.match(reg);
     if (yamlMatchArray) {
@@ -19,8 +19,8 @@ module.exports = function (src, name) {
             // 解析 yaml
             const yamlData = yaml.parse(yamlText);
             return {
-                src: gsrc({name, code: JSON.stringify(yamlData)}, src),
-                config: yamlData
+                src: gsrc({name, code: JSON.stringify({ ...yamlData, filepath })}, src),
+                config: { ...yamlData, filepath }
             }
         } catch (error) {
             return { src, config: {} };

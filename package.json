@@ -7,7 +7,7 @@
     "lerna": "^4.0.0"
   },
   "publishConfig": {
-    "registry": "http://store.codcats.com/"
+    "registry": "http://www.qoxop.run/"
   },
   "workspaces": [
     "packages/*"

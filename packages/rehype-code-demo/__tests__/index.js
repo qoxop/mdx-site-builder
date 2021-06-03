@@ -11,7 +11,7 @@ const files = [
 ]
 files.forEach(item => {
   const mdxCode = fs.readFileSync(item).toString();
-  const { src, config } = yamlParse(mdxCode, 'config');
+  const { src, config } = yamlParse(mdxCode, 'config', item);
   mdx(src, {
     remarkPlugins: [],
     rehypePlugins: [

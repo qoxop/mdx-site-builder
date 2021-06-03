@@ -13,7 +13,7 @@
   },
   "files": [ "lib" ],
   "publishConfig": {
-    "registry": "https://npm.qoxop.run"
+    "registry": "http://www.qoxop.run"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"

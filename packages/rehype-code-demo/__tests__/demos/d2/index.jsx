@@ -4,7 +4,8 @@ import MDX_Demo_1 from "/_demos/-demos-d2-index-mdx-d-1.demo.jsx";
 import CodesDisplay from '@mddoc/default-theme/codes-display';
 export const config = {
   "author": "q",
-  "tags": "code,mdx"
+  "tags": "code,mdx",
+  "filepath": "/Users/qoxop/development/mynpm/mdx-site-builder/packages/rehype-code-demo/__tests__/demos/d2/index.mdx"
 };
 
 const layoutProps = {
