@@ -17,7 +17,7 @@ export default function(filepath:string) {
     }
     const codeObj = {
         code: '',
-        filename: basename(filepath) + extName,
+        filename: basename(filepath),
         language: extName.replace('.', '')
     }
     try {

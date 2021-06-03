@@ -15,6 +15,7 @@ export default () => (
     <${p.name} 
         infos={${JSON.stringify(p.properties)}}
         scopes={{${Object.keys(p.scopes).map(k => `${k}: ${p.scopes[k]}`).join(', ')}}}
+        _key="${p.key}"
     >
         <pre>{\`${p.code}\`}</pre>
     </${p.name}>

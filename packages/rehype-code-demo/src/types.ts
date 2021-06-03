@@ -12,7 +12,7 @@ export interface IOptions {
     workingDir?: string;
     /** 当前 mdx 文件的路径(基于工作目录) */
     curFilePath: string;
-    /** 存放 demo 的路径(基于工作目录) */
+    /** 存放 demo 的绝对路径 */
     demopath:string;
     /** 是否展示相对路径代码 */
     viewRelative?:boolean;

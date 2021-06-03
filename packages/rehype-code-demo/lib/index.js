@@ -4,8 +4,6 @@ var _unistUtilVisit = _interopRequireDefault(require("unist-util-visit"));
 
 var _jsxGenerator = _interopRequireDefault(require("./jsx-generator"));
 
-var _path = require("path");
-
 var fs = _interopRequireWildcard(require("fs"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -20,14 +18,13 @@ const isPreDemoCode = node => {
 
 module.exports = function (options) {
   const {
-    workingDir,
     demopath,
     fileconfig,
     DisplayComponent
   } = options; // 确保 demo 文件路径存在
 
-  if (!fs.existsSync((0, _path.resolve)(workingDir, demopath))) {
-    fs.mkdirSync((0, _path.resolve)(workingDir, demopath));
+  if (!fs.existsSync(demopath)) {
+    fs.mkdirSync(demopath);
   }
 
   return function transformer(tree) {

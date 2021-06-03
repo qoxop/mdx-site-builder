@@ -88,7 +88,7 @@ function generator(code, metadata) {
     infos.forEach(item => {
       if (/^\.\.?\//.test(item.moduleName)) {
         // 相对路径 => 绝对路径
-        relativeFiles.push((0, _path.resolve)(workingDir || process.cwd(), curFilePath, item.moduleName)); // 使用相对与工作目录来说的绝对路径引入
+        relativeFiles.push((0, _path.resolve)((0, _path.dirname)(workingDir + curFilePath), item.moduleName)); // 使用相对与工作目录来说的绝对路径引入
 
         item.moduleName = (0, _path.resolve)(curFilePath, item.moduleName);
       }
@@ -100,12 +100,26 @@ function generator(code, metadata) {
     let demo = '';
 
     if (live) {
+      const scopes = {};
+      infos.forEach(info => {
+        if (info["*"]) {
+          scopes[info["*"]] = info["*"];
+        }
+
+        if (info.defaultProperty && info.defaultProperty !== 'React') {
+          scopes[info.defaultProperty] = info.defaultProperty;
+        }
+
+        if (info.properties) {
+          Object.assign(scopes, info.properties);
+        }
+      });
       demo = ComponentCreator.live({
         importCode,
         code: codeStr,
         properties,
         key,
-        scopes: {},
+        scopes,
         ...LiveComponent
       });
     } else {
@@ -117,7 +131,7 @@ function generator(code, metadata) {
     } // 将 demo 组件写入临时目录文件
 
 
-    fs.writeFileSync((0, _path.resolve)(workingDir, demopath, `./${key}.demo.jsx`), demo); // 处理展示用的代码
+    fs.writeFileSync((0, _path.resolve)(demopath, `./${key}.demo.jsx`), demo); // 处理展示用的代码
 
     const codes = [{
       code: live ? infos.map(item => `/* ${item.origin} */`).join('\n') + codeStr : code,

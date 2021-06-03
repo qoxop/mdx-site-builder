@@ -1,5 +1,5 @@
 
-import { resolve } from "path";
+import { resolve, relative, dirname } from "path";
 import { IImportInfo, IOptions } from "./types";
 import parseImports from "./utils/parse-imports";
 import * as ComponentCreator from './utils/component-creator';
@@ -81,7 +81,7 @@ export default function generator(code:string, metadata:IMetadata) {
         // 路径转化
         infos.forEach(item => {
             if (/^\.\.?\//.test(item.moduleName)) { // 相对路径 => 绝对路径
-                relativeFiles.push(resolve(workingDir || process.cwd(), curFilePath, item.moduleName));
+                relativeFiles.push(resolve(dirname(workingDir + curFilePath), item.moduleName));
                 // 使用相对与工作目录来说的绝对路径引入
                 item.moduleName = resolve(curFilePath, item.moduleName);
             }
@@ -92,12 +92,24 @@ export default function generator(code:string, metadata:IMetadata) {
         const key = `${curFilePath.replace(/\/|\./g, '-').toLowerCase()}-d-${index}`;
         let demo = '';
         if (live) {
+            const scopes = {};
+            infos.forEach(info => {
+                if (info["*"]) {
+                    scopes[info["*"]] = info["*"];
+                }
+                if (info.defaultProperty && info.defaultProperty !== 'React') {
+                    scopes[info.defaultProperty] = info.defaultProperty;
+                }
+                if (info.properties) {
+                    Object.assign(scopes, info.properties);
+                }
+            });
             demo = ComponentCreator.live({
                 importCode,
                 code: codeStr,
                 properties,
                 key,
-                scopes: {},
+                scopes,
                 ...LiveComponent,
             });
         } else {
@@ -108,7 +120,7 @@ export default function generator(code:string, metadata:IMetadata) {
             });
         }
         // 将 demo 组件写入临时目录文件
-        fs.writeFileSync(resolve(workingDir, demopath, `./${key}.demo.jsx`), demo);
+        fs.writeFileSync(resolve(demopath, `./${key}.demo.jsx`), demo);
         
         // 处理展示用的代码
         const codes:{code:string, language:string, type: 'main'|'minor', filename?:string}[] = [

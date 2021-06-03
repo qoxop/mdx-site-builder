@@ -29,7 +29,7 @@ function _default(filepath) {
 
   const codeObj = {
     code: '',
-    filename: (0, _path.basename)(filepath) + extName,
+    filename: (0, _path.basename)(filepath),
     language: extName.replace('.', '')
   };
 

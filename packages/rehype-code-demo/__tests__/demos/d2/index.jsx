@@ -1,6 +1,7 @@
 /* @jsxRuntime classic */
 /* @jsx mdx */
-
+import MDX_Demo_1 from "/_demos/-demos-d2-index-mdx-d-1.demo.jsx";
+import CodesDisplay from '@mddoc/default-theme/codes-display';
 export const config = {
   "author": "q",
   "tags": "code,mdx"
@@ -17,9 +18,11 @@ export default function MDXContent({
   return <MDXLayout {...layoutProps} {...props} components={components} mdxType="MDXLayout">
 
     <h3>{`code preview`}</h3>
-    <pre><code parentName="pre" {...{
-        "className": "language-jsx"
-      }}>{`import React, { useEffect } from 'react';
+
+    <CodesDisplay component={MDX_Demo_1} id="-demos-d2-index-mdx-d-1" live={false} properties={{
+      "className": ["language-jsx"]
+    }} mdxType="CodesDisplay">
+    <pre filename="undefined" type="main" language="tsx">{`import React, { useEffect } from 'react';
 
 export default () => {
   useEffect(() => {
@@ -29,7 +32,9 @@ export default () => {
     <h1>code preivew </h1>
   </div>
 }
-`}</code></pre>
+`}</pre>
+    </CodesDisplay>
+
     <blockquote>
       <p parentName="blockquote">{`other info 😋`}</p>
     </blockquote>

@@ -1,15 +1,14 @@
 var mdx = require('@mdx-js/mdx');
 var path = require('path')
 var fs = require('fs')
-var yamlParse = require('./yaml-to-export')
-var myplugin = require('../lib/index').default;
+var yamlParse = require('./yaml-to-export');
+var myplugin = require('../lib/index');
 
 const files = [
   path.resolve(__dirname, './demos/d1/index.mdx'),
   path.resolve(__dirname, './demos/d2/index.mdx'),
   path.resolve(__dirname, './demos/d3/index.mdx'),
 ]
-
 files.forEach(item => {
   const mdxCode = fs.readFileSync(item).toString();
   const { src, config } = yamlParse(mdxCode, 'config');
@@ -20,16 +19,16 @@ files.forEach(item => {
         myplugin, {
           workingDir: __dirname,
           curFilePath: item.replace(__dirname, ''),
-          demopath: path.resolve(__dirname, './_demos/'),
+          demopath: path.resolve(__dirname, './_demos'),
           fileconfig: config,
           viewRelative: true,
           LiveComponent: {
             name: 'LivePreviewer',
-            path: '@qoxop/default-theme/live-previewer',
+            path: '@mddoc/default-theme/live-previewer',
           },
           DisplayComponent: {
             name:'CodesDisplay',
-            path:'@qoxop/default-theme/codes-display',
+            path:'@mddoc/default-theme/codes-display',
           }
         }
       ]

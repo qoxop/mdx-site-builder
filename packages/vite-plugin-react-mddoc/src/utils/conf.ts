@@ -12,7 +12,7 @@ const defConf = {
     name:'CodesDisplay',
     path:'@mddoc/default-theme/lib/codes-display',
   },
-  /** 触发 demo 的路径 */
+  /** 存放 demo 的路径 */
   demopath: process.cwd() + '/.app/demos',
   viewRelative: true,
 }

@@ -18,14 +18,13 @@ const isPreDemoCode = (node) => {
 
 module.exports = function(options: IOptions) {
     const {
-        workingDir,
         demopath,
         fileconfig,
         DisplayComponent
     } = options;
     // 确保 demo 文件路径存在
-    if (!fs.existsSync(resolve(workingDir, demopath))) {
-        fs.mkdirSync(resolve(workingDir, demopath))
+    if (!fs.existsSync(demopath)) {
+        fs.mkdirSync(demopath);
     }
     return function transformer(tree) {
         const imports = [];
