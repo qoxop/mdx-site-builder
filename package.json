@@ -1,15 +1,35 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "start": "lerna exec yarn start",
+    "build": "lerna exec yarn build"
+  },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+    "@babel/preset-typescript": "^7.12.16",
+    "@mdx-js/mdx": "^1.6.22",
+    "@types/node": "^14.14.25",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
-    "lerna": "^4.0.0"
+    "delete": "^1.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-if": "^3.0.0",
+    "lerna": "^4.0.0",
+    "through2": "^4.0.2",
+    "yaml": "^1.10.2"
   },
   "publishConfig": {
     "registry": "http://www.qoxop.run/"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@mddoc/default-theme": "file:packages/default-theme",
+    "@mddoc/rehype-code-demo": "file:packages/rehype-code-demo",
+    "@mddoc/vite-plugin-react-mddoc": "file:packages/vite-plugin-react-mddoc"
+  }
 }

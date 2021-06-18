@@ -7,7 +7,7 @@ const IndexTpl = (mountedId = 'root', layoutPath = '/.app/layout') => `
   import React from 'react';
   import ReactDOM from 'react-dom';
   import DataProvider from '@mddoc/data-provider.tsx';
-  import Layout from '${layoutPath}'
+  import Layout from '${layoutPath}';
 
   ReactDOM.render(
     <React.StrictMode>

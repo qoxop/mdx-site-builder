@@ -22,7 +22,7 @@ function build () {
         .pipe(dest(`${OUTPUT_PATH}/`));
 }
 
-exports.start = function name(cb) {
+exports.start = function name() {
     watch(['src/**/*.ts'], { ignoreInitial : false }, build);
 }
 

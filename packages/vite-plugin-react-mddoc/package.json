@@ -5,21 +5,18 @@
   "author": "张集伟 <1106291186@qq.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "src/index.js",
-  "type": "module",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [ "lib" ],
-  "publishConfig": {
-    "registry": "http://www.qoxop.run"
-  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "start": "npx gulp start",
+    "build": "npx gulp",
+    "prepublish": "yarn run build"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.22",
-    "@mddoc/rehype-code-demo": "^1.0.2"
+    "@mddoc/rehype-code-demo": "file:../rehype-code-demo",
+    "@mdx-js/mdx": "^1.6.22"
   }
 }

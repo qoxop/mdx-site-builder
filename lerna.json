@@ -7,14 +7,12 @@
     "publish": {
       "ignoreChanges": ["ignored-file", "*.md"],
       "message": "chore(release): publish",
-      "registry": "https://npm.qoxop.run"
+      "registry": "https://registry.npmjs.org/"
     },
     "bootstrap": {
-      "ignore": "component-*",
-      "npmClientArgs": ["--no-package-lock"],
-      "scope": ["@mddoc"]
+      "npmClientArgs": ["--no-package-lock"]
     }
   },
   "useWorkspaces": true,
-  "version": "0.0.0"
+  "version": "1.0.0"
 }
