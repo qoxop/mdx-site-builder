@@ -21,9 +21,6 @@
     "through2": "^4.0.2",
     "yaml": "^1.10.2"
   },
-  "publishConfig": {
-    "registry": "http://www.qoxop.run/"
-  },
   "workspaces": [
     "packages/*"
   ],
