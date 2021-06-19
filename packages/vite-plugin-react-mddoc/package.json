@@ -1,6 +1,6 @@
 {
   "name": "@mddoc/vite-plugin-react-mddoc",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.2-alpha.0",
   "description": "vite mdx 文档插件",
   "author": "张集伟 <1106291186@qq.com>",
   "homepage": "",
