@@ -5,5 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "echo 99"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

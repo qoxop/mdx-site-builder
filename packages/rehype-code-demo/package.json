@@ -17,5 +17,8 @@
   "dependencies": {
     "typescript": "^4.1.4",
     "unist-util-visit": "^2.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
