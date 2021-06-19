@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start": "lerna exec yarn start",
-    "build": "lerna exec yarn build"
+    "start": "lerna run start",
+    "build": "lerna run build"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -23,10 +23,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "dependencies": {
-    "@mddoc/default-theme": "file:packages/default-theme",
-    "@mddoc/rehype-code-demo": "file:packages/rehype-code-demo",
-    "@mddoc/vite-plugin-react-mddoc": "file:packages/vite-plugin-react-mddoc"
-  }
+  ]
 }

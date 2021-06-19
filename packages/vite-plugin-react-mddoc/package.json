@@ -16,7 +16,7 @@
     "prepublish": "yarn run build"
   },
   "dependencies": {
-    "@mddoc/rehype-code-demo": "file:../rehype-code-demo",
+    "@mddoc/rehype-code-demo": "^1.0.2",
     "@mdx-js/mdx": "^1.6.22"
   }
 }
