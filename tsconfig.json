@@ -18,7 +18,7 @@
     "baseUrl": ".",
     "skipLibCheck": true,
     "paths": {
-      "@mddoc/*": ["./packages/*"],
+      "@qoxop/*": ["./packages/*"],
     }
   },
   "exclude": [

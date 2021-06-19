@@ -1,12 +1,12 @@
 import mdx from '@mdx-js/mdx';
-import rehypeCodeDemo from '@mddoc/rehype-code-demo';
+import rehypeCodeDemo from '@qoxop/rehype-code-demo';
 import yamlToExport from './utils/yaml-to-export';
 import mergeConf, { IConfig } from './utils/conf';
 
 const IndexTpl = (mountedId = 'root', layoutPath = '/.app/layout') => `
   import React from 'react';
   import ReactDOM from 'react-dom';
-  import DataProvider from '@mddoc/data-provider.tsx';
+  import DataProvider from '@qoxop/data-provider.tsx';
   import Layout from '${layoutPath}';
 
   ReactDOM.render(
@@ -68,8 +68,8 @@ const cwd = process.cwd();
 module.exports = function ReactMdxoc(options: IConfig) {
   options = mergeConf(options);;
   const { Layout, ModuleHandler } = options;
-  const entryId = '/@mddoc/index.tsx';
-  const providerId = '@mddoc/data-provider.tsx';
+  const entryId = '/@qoxop/index.tsx';
+  const providerId = '@qoxop/data-provider.tsx';
   return {
     name: 'mddoc',
     resolveId(id:string) { // 拦截文档入口文件，用于动态生成代码

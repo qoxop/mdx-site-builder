@@ -24,11 +24,11 @@ files.forEach(item => {
           viewRelative: true,
           LiveComponent: {
             name: 'LivePreviewer',
-            path: '@mddoc/default-theme/live-previewer',
+            path: '@qoxop/default-theme/live-previewer',
           },
           DisplayComponent: {
             name:'CodesDisplay',
-            path:'@mddoc/default-theme/codes-display',
+            path:'@qoxop/default-theme/codes-display',
           }
         }
       ]

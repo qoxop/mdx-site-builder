@@ -1,5 +1,5 @@
 {
-  "name": "@mddoc/vite-plugin-react-mddoc",
+  "name": "@qoxop/vite-plugin-react-mddoc",
   "version": "0.0.2-alpha.0",
   "description": "vite mdx 文档插件",
   "author": "张集伟 <1106291186@qq.com>",
@@ -16,7 +16,8 @@
     "prepublish": "yarn run build"
   },
   "dependencies": {
-    "@mddoc/rehype-code-demo": "^0.0.1-alpha.0",
+    "@qoxop/rehype-code-demo": "^0.0.1-alpha.0",
     "@mdx-js/mdx": "^1.6.22"
-  }
+  },
+  "gitHead": "55c628e1a5fb36ab929dbc55bc5fd88d618de06b"
 }

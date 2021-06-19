@@ -1,7 +1,7 @@
 /* @jsxRuntime classic */
 /* @jsx mdx */
 import MDX_Demo_1 from "/_demos/-demos-d3-index-mdx-d-1.demo.jsx";
-import CodesDisplay from '@mddoc/default-theme/codes-display';
+import CodesDisplay from '@qoxop/default-theme/codes-display';
 export const config = {
   "author": "q",
   "tags": "code,mdx",

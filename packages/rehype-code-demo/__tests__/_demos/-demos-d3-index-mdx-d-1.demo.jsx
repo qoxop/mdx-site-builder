@@ -1,7 +1,7 @@
 
 import React, { useEffect } from "react";
 import str from "/demos/d3/index.mdx/data/str";
-import LivePreviewer from "@mddoc/default-theme/live-previewer";
+import LivePreviewer from "@qoxop/default-theme/live-previewer";
 
 export const $$_key = "-demos-d3-index-mdx-d-1";
 
