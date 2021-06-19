@@ -1,6 +1,6 @@
 {
   "name": "@qoxop/rehype-code-demo",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.3-alpha.0",
   "description": "mdx 代码块转 demo 展示插件",
   "author": "张集伟 <1106291186@qq.com>",
   "main": "dist/index.js",
