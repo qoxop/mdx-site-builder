@@ -64,7 +64,7 @@ function tramformMdxToJsx(params: {
 
 const cwd = process.cwd();
 
-// TODO 默认参数的配置
+// TODO 默认参数的配置 
 module.exports = function ReactMdxoc(options: IConfig) {
   options = mergeConf(options);;
   const { Layout, ModuleHandler } = options;
